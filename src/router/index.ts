@@ -12,7 +12,6 @@ import Layout from '@/layout/index.vue'
 import chargeStationRouter from './modules/chargestation'
 import organizationRouter from './modules/organization'
 
-
 Vue.use(VueRouter)
 
 /*
@@ -62,7 +61,7 @@ export const constantRoutes: RouteConfig[] = [
   },
   {
     path: '/login-test',
-    component: () => import(/* webpackChunkName: "-test" */ '@/views/login-test/index.vue'),
+    component: () => import(/* webpackChunkName: "login-test" */ '@/views/login-test/index.vue'),
     meta: { hidden: true }
   },
   {
@@ -83,6 +82,8 @@ export const constantRoutes: RouteConfig[] = [
   {
     path: '/',
     component: Layout,
+    // sca
+    // redirect: '/login-test',
     redirect: '/dashboard',
     children: [
       {

@@ -43,7 +43,7 @@ export const getArticles = (req: Request, res: Response) => {
   const pageList = mockList.filter((_, index) => index < (limit as number) * (page as number) && index >= (limit as number) * (page as number - 1))
 
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       total: mockList.length,
       items: pageList
@@ -56,7 +56,7 @@ export const getArticle = (req: Request, res: Response) => {
   for (const article of articleList) {
     if (article.id.toString() === id) {
       return res.json({
-        code: 20000,
+        code: 200,
         data: {
           article
         }
@@ -72,7 +72,7 @@ export const getArticle = (req: Request, res: Response) => {
 export const createArticle = (req: Request, res: Response) => {
   const { article } = req.body
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       article
     }
@@ -85,7 +85,7 @@ export const updateArticle = (req: Request, res: Response) => {
   for (const v of articleList) {
     if (v.id.toString() === id) {
       return res.json({
-        code: 20000,
+        code: 200,
         data: {
           article
         }
@@ -100,13 +100,13 @@ export const updateArticle = (req: Request, res: Response) => {
 
 export const deleteArticle = (req: Request, res: Response) => {
   return res.json({
-    code: 20000
+    code: 200
   })
 }
 
 export const getPageviews = (req: Request, res: Response) => {
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       pageviews: [
         { key: 'PC', pageviews: 1024 },

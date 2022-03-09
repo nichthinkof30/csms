@@ -19,7 +19,7 @@ const settings: ISettings = {
   showSidebarLogo: false,
   errorLog: ['development', 'production'],
   sidebarTextTheme: true,
-  devServerPort: 8000,
+  devServerPort: 443, // sca 8000,
   mockServerPort: 8001
 }
 

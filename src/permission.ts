@@ -25,8 +25,8 @@ router.beforeEach(async(to: Route, _: Route, next: any) => {
   // Start progress bar
   NProgress.start()
 
-  // sca: check tokenn status
-  console.log('user token available?', UserModule )
+  // sca: check token status
+  console.log('user token available?', UserModule)
 
   // Determine whether the user has logged in
   if (UserModule.token) {

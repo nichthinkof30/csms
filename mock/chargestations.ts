@@ -7,8 +7,7 @@ const chargestationCount = 100
 const mockFullContent = '<p>I am testing data, I am testing data.</p><p><img src="https://wpimg.wallstcn.com/4c69009c-0fd4-4153-b112-6cb53d1cf943"></p>'
 
 for (let i = 0; i < chargestationCount; i++) {
-
-  const arr = ['OCPP1.6','OCPP2.0.1','OSCP2.0','OSCP1.0','NON-OCPP']
+  const arr = ['OCPP1.6', 'OCPP2.0.1', 'OSCP2.0', 'OSCP1.0', 'NON-OCPP']
   let serialChars = ''
   for (let i = 0; i < 2; i++) {
     serialChars += faker.random.alpha().toUpperCase()
@@ -21,16 +20,16 @@ for (let i = 0; i < chargestationCount; i++) {
 
   let serialNo = '0'
   let serialNo2 = '0'
-  serialNo +=  faker.datatype.number( {'min': 10000,'max': 90000}).toString()
-  serialNo2 +=  faker.datatype.number( {'min': 10000,'max': 90000}).toString()
+  serialNo += faker.datatype.number({ min: 10000, max: 90000 }).toString()
+  serialNo2 += faker.datatype.number({ min: 10000, max: 90000 }).toString()
 
-  let serial = serialChars + serialNo
-  let serialBoxNo = serialChars2 + serialNo2
+  const serial = serialChars + serialNo
+  const serialBoxNo = serialChars2 + serialNo2
 
   chargestationList.push({
     title: 'title_dummy',
     id: i + 1,
-    serial:  serial,
+    serial: serial,
     operator: faker.company.companyName().toUpperCase(),
     provider: faker.random.arrayElement(arr),
     status: faker.datatype.boolean(),
@@ -46,12 +45,12 @@ for (let i = 0; i < chargestationCount; i++) {
     currencyName: faker.finance.currencyName(),
     charge_box_serial_number: serialBoxNo,
     ocpp_hash_code: 'ocpp_hash_code',
-    ocpp_status: faker.datatype.boolean() ?  'Available' : 'Unavailable',
+    ocpp_status: faker.datatype.boolean() ? 'Available' : 'Unavailable',
     info: '{}',
     is_private: faker.datatype.boolean(),
     device_status: 'device_status',
     diagnostics_status: 'diagnostics_status',
-    firmware_status: faker.datatype.boolean() ?  'Status Ok' : 'Status Not Ok',
+    firmware_status: faker.datatype.boolean() ? 'Status Ok' : 'Status Not Ok',
     meta: {
       access_hours: 'string',
       tariffs_start: 0,
@@ -62,7 +61,7 @@ for (let i = 0; i < chargestationCount; i++) {
       is_solar_energy: faker.datatype.boolean(),
       autocharge_enable: faker.datatype.boolean(),
       currency: 5,
-      twentyfourseven: faker.datatype.boolean(),
+      twentyfourseven: faker.datatype.boolean()
     },
     location_id: faker.random.alphaNumeric(2).toUpperCase(),
     operator_id: 'string'
@@ -86,7 +85,7 @@ export const getChargeStations = (req: Request, res: Response) => {
   const pageList = mockList.filter((_, index) => index < (limit as number) * (page as number) && index >= (limit as number) * (page as number - 1))
 
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       total: mockList.length,
       items: pageList
@@ -99,7 +98,7 @@ export const getChargeStation = (req: Request, res: Response) => {
   for (const chargestation of chargestationList) {
     if (chargestation.id.toString() === id) {
       return res.json({
-        code: 20000,
+        code: 200,
         data: {
           chargestation
         }
@@ -115,7 +114,7 @@ export const getChargeStation = (req: Request, res: Response) => {
 export const createChargeStation = (req: Request, res: Response) => {
   const { chargestation } = req.body
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       chargestation
     }
@@ -128,7 +127,7 @@ export const updateChargeStation = (req: Request, res: Response) => {
   for (const v of chargestationList) {
     if (v.id.toString() === id) {
       return res.json({
-        code: 20000,
+        code: 200,
         data: {
           chargestation
         }
@@ -143,13 +142,13 @@ export const updateChargeStation = (req: Request, res: Response) => {
 
 export const deleteChargeStation = (req: Request, res: Response) => {
   return res.json({
-    code: 20000
+    code: 200
   })
 }
 
 export const getPageviewsCS = (req: Request, res: Response) => {
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       pageviews: [
         { key: 'PC', pageviews: 1024 },

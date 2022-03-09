@@ -37,7 +37,7 @@ const roles: IRoleData[] = [
 
 export const getRoles = (req: Request, res: Response) => {
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       total: roles.length,
       items: roles
@@ -47,7 +47,7 @@ export const getRoles = (req: Request, res: Response) => {
 
 export const createRole = (req: Request, res: Response) => {
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       key: faker.datatype.number({ min: 3, max: 10000 })
     }
@@ -57,7 +57,7 @@ export const createRole = (req: Request, res: Response) => {
 export const updateRole = (req: Request, res: Response) => {
   const { role } = req.body
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       role
     }
@@ -66,13 +66,13 @@ export const updateRole = (req: Request, res: Response) => {
 
 export const deleteRole = (req: Request, res: Response) => {
   return res.json({
-    code: 20000
+    code: 200
   })
 }
 
 export const getRoutes = (req: Request, res: Response) => {
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       routes
     }

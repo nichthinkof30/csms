@@ -17,7 +17,7 @@ service.interceptors.request.use(
     if (UserModule.token) {
       config.headers['X-Access-Token'] = UserModule.token
       // //sca
-      config.headers['Bearer'] = UserModule.token
+      config.headers.Bearer = UserModule.token
     }
     return config
   },
@@ -38,28 +38,12 @@ service.interceptors.response.use(
     // code == 50005: username or password is incorrect
     // You can change this part for your own usage.
 
-    // sca
-    console.log('Response interceptors', response)
-
-    // Message({
-    //       message: 'test' || 'Error',
-    //       type: 'success',
-    //       duration: 5 * 1000
-    //     })
-
-    // return response.data
-
     const res = response.data
-    // sca
-    console.log('Response interceptors res', response.data)
-    // return response.data
-    res.code = 20000
-    console.log('res.code = 20000')
-    if (res.code !== 20000) {
 
-      // sca
-      console.log('if (res.code !== 20000) {', response.data)
+    res.code = response.status
 
+    // if (res.code !== 20000) {
+    if (res.code !== 200) {
       Message({
         message: res.message || 'Error',
         type: 'error',
@@ -81,9 +65,13 @@ service.interceptors.response.use(
       }
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
-      //sca
+      // sca
       console.log('return response.data', response.data)
 
+      // for real api
+      // return response
+
+      // for mock api
       return response.data
     }
   },

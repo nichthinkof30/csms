@@ -17,7 +17,7 @@ for (let i = 0; i < transactionCount; i++) {
 
 export const getTransactions = (req: Request, res: Response) => {
   return res.json({
-    code: 20000,
+    code: 200,
     data: {
       total: transactionList.length,
       items: transactionList

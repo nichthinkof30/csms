@@ -67,8 +67,16 @@ class User extends VuexModule implements IUserState {
     // sca
     console.log('public async Login', data)
 
-    setToken(data.accessToken)
-    this.SET_TOKEN(data.accessToken)
+    // for real api
+    if (typeof data.auth_token !== 'undefined') {
+      this.SET_TOKEN(data.auth_token)
+    }
+
+    // for mock api
+    if (typeof data.accessToken !== 'undefined') {
+      setToken(data.accessToken)
+      this.SET_TOKEN(data.accessToken)
+    }
   }
 
   @Action
@@ -80,9 +88,8 @@ class User extends VuexModule implements IUserState {
 
   @Action
   public async GetUserInfo() {
-
-    //sca
-    console.log('public async GetUserInfo() ', this.token )
+    // sca
+    console.log('public async GetUserInfo() ', this.token)
 
     if (this.token === '') {
       throw Error('GetUserInfo: token is undefined!')

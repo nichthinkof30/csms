@@ -33,23 +33,24 @@ export const deleteUser = (username: string) =>
     method: 'delete'
   })
 
+// sca : temporary hardcoded fro testing
 export const login = (data: any) =>
-  // sca : temporary hardcoded
-  // request({
-  //   url: '/auth/signin/staff' ,
-  //   method: 'post',
-  //   data : {
-  //     "email": "admin@jomcharge.com",
-  //     "password": "password",
-  //     "organization_id": "61a0ab6b-a586-44f4-83c7-06811da240fb"
-  //   }
-  // })
-
   request({
-    url: '/users/login',
+    url: 'https://jomcharge.itstartechs.com/jomcharge-main/api/v1/auth/signin/staff',
     method: 'post',
-    data
+    data: {
+      email: 'admin@jomcharge.com',
+      password: 'password',
+      organization_id: '61a0ab6b-a586-44f4-83c7-06811da240fb'
+    }
   })
+
+// export const login = (data: any) =>
+//   request({
+//     url: '/users/login',
+//     method: 'post',
+//     data
+//   })
 
 export const logout = () =>
   request({

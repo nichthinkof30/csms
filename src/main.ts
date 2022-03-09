@@ -19,11 +19,11 @@ import '@/pwa/register-service-worker'
 import * as directives from '@/directives'
 import * as filters from '@/filters'
 
-import x5GMaps from 'x5-gmaps'
+// import x5GMaps from 'x5-gmaps'
 
 Vue.use(ElementUI, {
   size: AppModule.size, // Set element-ui default size
-  i18n: (key: string, value: string) => i18n.t(key, value),
+  i18n: (key: string, value: string) => i18n.t(key, value)
 })
 
 Vue.use(SvgIcon, {
@@ -32,10 +32,10 @@ Vue.use(SvgIcon, {
   defaultHeight: '1em'
 })
 
-//// Google Maps
-//// Option 1: Just your key
-Vue.use(x5GMaps, 'AIzaSyCL0RSk2kEqUA7I81aaTFpjLC-v8-Ai5xM');
-//// Option 2: With libraries
+// // Google Maps
+// // Option 1: Just your key
+// Vue.use(x5GMaps, 'AIzaSyCL0RSk2kEqUA7I81aaTFpjLC-v8-Ai5xM');
+// // Option 2: With libraries
 // Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] });
 
 // Register global directives
